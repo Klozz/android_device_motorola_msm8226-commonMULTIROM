@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2014 The XPerience Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,10 +24,10 @@
 BOARD_VENDOR := motorola-qcom
 
 # Platform
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno305
-TARGET_BOARD_PLATFORM := msm8226
-TARGET_BOOTLOADER_BOARD_NAME := MSM8226
-TARGET_CPU_VARIANT := krait
+TARGET_BOARD_PLATFORM_GPU 	:= qcom-adreno305
+TARGET_BOARD_PLATFORM 		:= msm8226
+TARGET_BOOTLOADER_BOARD_NAME    := MSM8226
+TARGET_CPU_VARIANT 		:= krait
 TARGET_USE_KINGFISHER_OPTIMIZATION := true
 
 -include device/motorola/qcom-common/BoardConfigCommon.mk
@@ -99,3 +99,18 @@ TARGET_USERIMAGES_USE_F2FS := true
 TW_EXTERNAL_STORAGE_PATH := "/usb-otg"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "usb-otg"
 BOARD_RECOVERY_SWIPE := true
+
+#configs for MultiROM
+#MultiROM config. MultiROM also uses parts of TWRP config
+MR_INPUT_TYPE := type_b
+MR_INIT_DEVICES := device/motorola/falcon/mr_init_devices.c
+MR_RD_ADDR := 0x00A00000
+MR_DPI := hdpi
+MR_FSTAB := device/motorola/msm8226-common/rootdir/etc/twrp.fstab
+MR_KEXEC_MEM_MIN := 0x01100000 
+#Cat proc/iomem 
+#  00100000-1fffffff : System RAM I USE 0x01100000 :) I thing this work :)
+#  01000000-016f9945 : Kernel code
+#  016f9946-01d0e7ff : Kernel data
+#  01e6d000-01fcffff : Kernel bss
+#MR_INFOS := device/motorola/falcon/mrom_infos
